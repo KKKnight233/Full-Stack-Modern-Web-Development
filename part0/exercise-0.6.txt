@@ -1,0 +1,14 @@
+participant browser
+participant server
+
+Note right of browser: User types "pupu" and clicks Save
+Note right of browser: spa.js handles submit and calls e.preventDefault()
+Note right of browser: Browser adds the new note locally and redraws the list (DOM update)
+
+browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+activate server
+Note right of browser: Request body (JSON): {"content":"pupu","date":"2025-12-26T07:59:42.267Z"}
+server-->>browser: 201 Created
+deactivate server
+
+Note right of browser: No redirect, no page reload, no additional HTTP requests
