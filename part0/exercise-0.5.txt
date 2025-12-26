@@ -1,0 +1,25 @@
+title Single page app diagram
+
+participant browser
+participant server
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+server-->>browser: HTML-code
+
+note over browser:
+browser parses HTML and fetches CSS/JS
+end note
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+server-->>browser: main.css
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+server-->>browser: spa.js
+
+note over browser:
+browser starts executing spa.js
+spa.js requests note data and updates the DOM
+end note
+
+browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+server-->>browser: JSON data (notes)
